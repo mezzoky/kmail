@@ -1,0 +1,2 @@
+# source /webapps/kmailbackend/bin/activate
+/webapps/kmailbackend/bin/python3 /webapps/kmailbackend/kmail/docron.py /webapps/kmailbackend/kmail/data.json >> /webapps/kmailbackend/kmail/logs.txt 2>&1

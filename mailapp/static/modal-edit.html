@@ -1,0 +1,53 @@
+<div class="ui standard add modal">
+    <div class="header" ng-show="willSendOn">Email #{{messagePosition+1}} should send on {{willSendOn | date:'dd/MM/yyyy (EEEE) @ h:mma'}}</div>
+    <div class="content">
+        <div class="description">
+            <div class="ui header"></div>
+            <form class="ui edit-with-upload-files form">
+                <div class="field" ng-show="field === 'to'">
+                    <label>To</label>
+                    <input class="to" name="to" ng-model="form.to" type="text" placeholder="kevin@domain.com">
+                </div>
+                <div class="field" ng-show="field === 'cc'">
+                    <label>CC</label>
+                    <input class="cc" name="cc" ng-model="form.cc" type="text" placeholder="kevinkevin@domain.com, kevinlim@domain.com, limkevin@domain.com">
+                </div>
+                <div class="field" ng-show="field === 'end'">
+                    <label>End at</label>
+                    <input class="end" name="end" ng-model="form.end" type="datetime-local">
+                </div>
+                <div class="field" ng-show="field === 'message'">
+                    <label>Title</label>
+                    <input type="text" name="title" class="title" ng-model="form.title" />
+                </div>
+                <div class="field" ng-show="field === 'message'">
+                    <label>Content</label>
+                    <textarea class="message" name="message" ng-model="form.message" />
+                </div>
+                <div class="field" ng-show="field === 'message'">
+                    <label>Native Upload Multiple</label>
+                    <!-- <input type="file" name="files" multiple> -->
+                </div>
+                <div class="field" ng-show="field === 'message'">
+                    <div class="ui button" ng-model="files" ngf-select ngf-multiple="true">Upload Files </div>
+                    <div ngf-drop name="files" ng-model="files" class="ui inverted segment" ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true">
+                        <h2 class="ui inverted header">
+                          Drop</h2>
+                        <div class="sub header">Images or PDFs files here</div>
+                    </div>
+                    <span class="ui blue horizontal label" ng-repeat="file in files"> {{file.name}} </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui right cancel red labeled icon button" ng-click="edimodal.cancel()">
+            Cancel<i class="cancel icon"></i></div>
+
+        <div class="ui right green labeled icon button" ng-click="edimodal.save()">
+            Save<i class="{{edimodal.saving}} icon"></i></div>
+
+        <div class="ui right blue labeled icon button" ng-click="edimodal.send()">
+            Send<i class="{{edimodal.sending}} icon"></i></div>
+    </div>
+</div>

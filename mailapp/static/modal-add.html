@@ -1,0 +1,29 @@
+<div class="ui standard add modal">
+    <div class="header">Add Email</div>
+    <div class="image content">
+        <div class="description">
+            <div class="ui header"></div>
+            <form class="ui form" ng-submit="mc.submit()">
+                <div class="field">
+                    <label>To</label>
+                    <input ng-model="mc.form.to" type="text" placeholder="kevin@domain.com">
+                </div>
+                <div class="field">
+                    <label>CC</label>
+                    <input ng-model="mc.form.cc" type="text" placeholder="kevinkevin@domain.com, kevinlim@domain.com, limkevin@domain.com">
+                </div>
+                <div class="field">
+                    <label>End at</label>
+                    <input ng-model="mc.form.end" type="datetime-local">
+                </div>
+                <div class="field" style="display: none">
+                    <input type="submit" value="Add">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui positive right labeled icon button" ng-click="mc.submit()">
+            Add<i class="checkmark icon"></i></div>
+    </div>
+</div>

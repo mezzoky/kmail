@@ -1,0 +1,45 @@
+body {
+    opacity: 0;
+    background: white;
+    transition: all 1.5s ease;
+}
+
+.main.segment {
+    margin-left: 1em!important;
+    margin-top: 1em!important;
+    margin-right: .8em!important;
+}
+
+.fixed-bottom-right {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+.fixed-bottom-left {
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+}
+
+.vertical-divider {
+    border: 1px solid #BEBEBE;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    height: 100%;
+    width: 1px;
+    display: inline;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+.ui.double-click-input.input {
+    display: none;
+}
+
+.ui.double-click-input.input input {
+    /*padding: 0;*/
+    width: 100%;
+    background: rgba(0, 0, 0, .02);
+}

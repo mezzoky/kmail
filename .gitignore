@@ -1,0 +1,8 @@
+__pycache__
+*.pyc
+nohup*
+data.json
+column.json
+db.sqlite3
+logs.txt
+secret.json

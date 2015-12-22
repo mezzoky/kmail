@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.1/semantic.min.css">
+    <link rel="stylesheet" href="static/app.css">
+</head>
+
+<body>
+    <div ng-controller="ListController as lisctrl">
+        <div class="ui dimmer" ng-class="{active: lisctrl.loading}">
+            <div class="ui large indeterminate text loader">Fetching your data. Please wait.</div>
+        </div>
+        <table class="ui selectable celled table">
+            <thead>
+                <tr>
+                    <th double-click-edit level="i" ng-repeat="i in [0,1,2,3,4,5]"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in lisctrl.list track by $index" ng-controller="KevinItemController as ki">
+                    <td>
+                        <i class="delete circular red icon" ng-click="ki.delete($index)"></i>
+                    </td>
+                    <td>
+                        <a class="ui circular label" ng-class="ki.color" ng-bind="$index+1"></a>
+                    </td>
+                    <td ng-click="lisctrl.openEditModal(item, 'to')"><a class="ui red tag label"><i class="mail icon"></i><span ng-bind="item.to"></span></a></td>
+                    <td ng-click="lisctrl.openEditModal(item, 'cc')">
+                        <a class="ui red label" ng-repeat="target in item.cc track by $index">
+                            <i class="mail icon"></i> <span ng-bind="target"></span>
+                        </a>
+                    </td>
+                    <td ng-click="lisctrl.openEditModal(item, 'end')"><a class="ui green label"><i class="calendar icon"></i><span ng-bind="item.end | date:'dd/MM/yyyy @ h:mma'"></span></a></td>
+                    <td>
+                        <send-mail-switch end="item.end" sent="item.sent[0]" level="3"></send-mail-switch>
+                        <send-mail-switch end="item.end" sent="item.sent[1]" level="2"></send-mail-switch>
+                        <send-mail-switch end="item.end" sent="item.sent[2]" level="1"></send-mail-switch>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="fixed-bottom-left ui circular blue icon button" ng-controller="AddItemController as aic" ng-click="aic.logout()">
+        <i class="big sign out icon" title="Logout User"></i>
+    </div>
+    <div class="fixed-bottom-right ui circular red icon button" ng-controller="AddItemController as aic" ng-click="aic.add()">
+        <i class="big plus icon" title="Add Email"></i>
+    </div>
+    <info-modal></info-modal>
+    <edit-modal></edit-modal>
+    <add-modal></add-modal>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.1/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-cookies.min.js"></script>
+    <script src="static/ng-file-upload.min.js"></script>
+    <script src="static/app.js"></script>
+    {% csrf_token %}
+</body>
+</html>
